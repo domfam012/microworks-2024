@@ -344,8 +344,8 @@
 }
 
 /* --------  Contact Us :: 문의하기  -------- */
-@media all and (max-width:800px){
+/* @media all and (max-width:800px){
 	.inquiry-page colgroup {display:none;}
 	.inquiry-page .bbs-write-tbl .tel-row .write-input {width: 27%;}
-}
+} */
 

@@ -524,7 +524,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <!-- <div class="modal-loading"><span class="loading"></span></div> -->
       <div class="modal-inner-box">
 				<div class="modal-inner-header">
-					<p class="modal-title">반도체 분석 문의</p>
+					<p class="modal-title">구매 문의</p>
 					<a href="javascript:;" class="modal-close-btn" title="팝업 닫기"><i class="material-icons">&#xE14C;</i></a>
 				</div>
         <div class="modal-inner-content">
@@ -554,6 +554,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 									<p class="inquiry-essential-txt"><span class="essential-icon">*</span> 표시는 필수 입력 항목입니다.</p>
 									<table class="bbs-write-tbl">
 										<caption>문의폼입니다.</caption>
+										<colgroup>
+											<col style="width:16%;">
+											<col>
+										</colgroup>
 										<tbody>
 											<tr>
 												<th scope="row"><span class="essential-icon">*</span> 이름</th>
@@ -600,39 +604,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 												<td><input type="text" class="write-input width-full" name="company"></td>
 											</tr>
 											<tr>
-												<th scope="row"><span class="essential-icon">*</span> 파트명</th>
-												<td><input type="text" class="write-input width-full" name="part" required="required"></td>
+												<th scope="row">부품명</th>
+												<td><input type="text" class="write-input width-full" name="part-name"></td>
 											</tr>
 											<tr>
-												<th scope="row"><span class="essential-icon">*</span> 의뢰수량</th>
-												<td><input type="text" class="write-input" name="request-quantity" required="required"></td>
+												<th scope="row">필요수량</th>
+												<td><input type="text" class="write-input width-full" name="request-quantity"></td>
 											</tr>
 											<tr>
-												<th scope="row"><span class="essential-icon">*</span> 문의내용</th>
+												<th scope="row">희망납기</th>
+												<td><input type="text" class="write-input width-full" name="wish-date"></td>
+											</tr>
+											<tr>
+												<th scope="row">목표단가</th>
+												<td><input type="text" class="write-input width-full" name="goal-price"></td>
+											</tr>
+											<tr>
+												<th scope="row">내용</th>
 												<td>
-													<select name="inquiry-content" class="write-select" required="required">
-														<option value="">위변조(정품비교분석)</option>
-													</select>
-												</td>
-											</tr>
-											<tr>
-												<th scope="row"><span class="essential-icon">*</span> 정품보유여부</th>
-												<td>
-													<div class="ox-group">
-														<span class="ox">
-															<input type="radio" name="genuine" id="genuine-y">
-															<label for="genuine-y">예</label>
-														</span>
-														<span class="ox">
-															<input type="radio" name="genuine" id="genuine-n">
-															<label for="genuine-n">아니오</label>
-														</span>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<th scope="row">상세내용</th>
-												<td class="size-full">
 													<textarea name="content" class="write-textarea"></textarea>
 												</td>
 											</tr>

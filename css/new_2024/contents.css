@@ -373,13 +373,15 @@ box-sizing: border-box; }
 
 /* 문의 팝업 */
 .inquiry-popup{overflow-y: auto;}
+.inquiry-popup .modal-inner-box{display: block;}
 .inquiry-popup .modal-inner-header{display: flex; justify-content: center; align-items: center; position: relative; width: 100%; height: 60px; background-color: var(--secondary-color);}
 .inquiry-popup .modal-title{font-weight: 600; font-size: 22px; color: white;}
 .inquiry-popup .modal-close-btn{top: 50%; transform: translateY(-50%);}
 .inquiry-popup .modal-fixed-pop-inner{display: block; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 1088px; height: unset; background-color: white;}
 .inquiry-popup .modal-inner-content{height: 640px; padding: 30px 28px 36px; overflow-y: auto; box-sizing: border-box;}
 .inquiry-popup .agree-tit{font-weight: 600;}
-.inquiry-popup .bbs-write-tbl td{padding-right: 10.4%;}
+.inquiry-popup .bbs-write-tbl th{width: 25%;}
+.inquiry-popup .bbs-write-tbl td{padding-right: 9.3%;}
 .inquiry-popup .bbs-write-tbl td.size-full{padding-right: 8px;}
 
 /* .inquiry-popup .inquiry-form td{padding-right: 10px;}
@@ -433,33 +435,6 @@ fieldset em{margin-left: 5.5px; margin-right: 2.5px; font-weight: 600; letter-sp
 .address-fieldset .write-input:first-child{margin-top:0;}
 .bbs-write-tbl .address-btn{display:inline-block; min-width:114px; padding:0 10px; height:38px; border:1px solid #464646; vertical-align:middle; text-align:center; color:#464646; font-size:14px; font-weight:400; margin-left:10px;}
 .bbs-write-tbl .address-btn:hover{background-color:#464646; color:#fff;}
-
-@media all and (max-width:800px){
-	/* 게시판 :: 쓰기, 문의폼 :: 개인정보취급방침 */
-	.bbs-inquiry-agree-con{margin-bottom:25px;}
-	.bbs-inquiry-agree-con .agree-tit{font-size:16px;}
-	.inquiry-agreement-con{height:100px; padding:15px}
-	.bbs-inquiry-agree-con .agree-txt{font-size:13px;}
-
-	/* 게시판 :: 쓰기, 문의폼 :: 작성영역 */
-	.bbs-write-tbl tr, .bbs-write-tbl th, .bbs-write-tbl td{display:block; padding:0; width:100% !important; border-bottom:0; text-indent:0;}
-	.bbs-write-tbl th{font-size:13px; padding-top:10px; font-weight:600;}
-	.bbs-write-tbl td{padding:10px 0; border-bottom:1px solid #ddd; }
-	.bbs-write-tbl td .write-input,
-	.bbs-write-tbl td .write-select,
-	.bbs-write-tbl td .write-textarea{width:100%; max-width: none; height:auto; padding:10px 0; border:0; background-color:#f0f0f0; -webkit-border-radius:5px;-moz-border-radius:5px;-o-border-radius:5px;border-radius:5px;}
-	.bbs-write-tbl td .write-textarea{height:80px;}
-	.bbs-write-tbl td .write-sub-txt, .bbs-write-tbl td .write-sub-txt2{display:block; margin-left:0; margin-top:5px; text-align:right; font-size:12px; }
-
-	/* 게시판 :: 쓰기, 문의폼 :: 기타 */
-	.bbs-write-tbl .input-check{padding:5px 0;}
-	.bbs-write-tbl .input-check span{margin-right:15px;}
-	.phone-fieldset .write-input,
-	.phone-fieldset .write-select{width:calc(33.33% - 18px) !important;}
-	.bbs-write-tbl .email-fieldset .write-input{width:calc(50% - 18px) !important;}
-	.bbs-write-tbl .email-fieldset .write-select{max-width:100% !important; margin-top:5px; margin-left: 0;}
-	.bbs-write-tbl .address-btn{min-width:auto; font-size:12px; margin-left:5px; -webkit-border-radius:5px;-moz-border-radius:5px;-o-border-radius:5px;border-radius:5px;}
-}
 
 /* product search - tab */
 .tabs{display: flex; width: 100%; max-width: 1300px; margin: 0 auto 60px; border-bottom: 1px solid var(--line-color-dark); box-sizing: border-box;}
@@ -648,9 +623,55 @@ fieldset em{margin-left: 5.5px; margin-right: 2.5px; font-weight: 600; letter-sp
 	.inquiry-popup{padding: 15px; box-sizing: border-box;}
 	.inquiry-popup .modal-fixed-pop-inner{width: calc(100% - 30px);}
 	.inquiry-popup .modal-inner-header{height: 52px;}
-	.inquiry-popup .modal-inner-content{height: auto; max-height: calc(100vh - 82px);}
+	.inquiry-popup .modal-title{font-size: 16px;}
+	.inquiry-popup .modal-inner-content{height: auto; max-height: calc(100vh - 82px); padding: 30px 15px 50px;}
+	
+
+	.inquiry-popup .bbs-write-tbl th{width: 14%;}
+
 	.inquiry-popup .bbs-write-tbl td,
-	.inquiry-popup .bbs-write-tbl td.size-full{padding-right: 8px;}
+	.inquiry-popup .bbs-write-tbl td.size-full,
+	.bbs-write-tbl td,
+	.bbs-write-tbl td.size-full{padding-right: 10px;}
+}
+
+@media all and (max-width:875px){
+	/* 게시판 :: 쓰기, 문의폼 :: 개인정보취급방침 */
+	.inquiry-popup colgroup,
+	.inquiry-page colgroup {display:none;}
+	.inquiry-popup .bbs-write-tbl .tel-row .write-input,
+	.inquiry-page .bbs-write-tbl .tel-row .write-input {max-width: 25%;}
+
+	.bbs-inquiry-agree-con{margin-bottom:25px;}
+	.bbs-inquiry-agree-con .agree-tit{font-size:16px;}
+	.inquiry-agreement-con{height:100px; padding:15px}
+	.bbs-inquiry-agree-con .agree-txt{font-size:13px;}
+
+	/* 게시판 :: 쓰기, 문의폼 :: 작성영역 */
+	.bbs-write-tbl tr, .bbs-write-tbl th, .bbs-write-tbl td{display:block; padding:0; width:100% !important; border-bottom:0; text-indent:0;}
+	.bbs-write-tbl th{font-size:13px; padding-top:10px; font-weight:600;}
+	.bbs-write-tbl td{padding:10px 0; border-bottom:1px solid #ddd; }
+	.bbs-write-tbl td .write-input,
+	.bbs-write-tbl td .write-select,
+	.bbs-write-tbl td .write-textarea{width:100%; max-width: none; height:auto; padding:10px 0; border:0; background-color:#f0f0f0; -webkit-border-radius:5px;-moz-border-radius:5px;-o-border-radius:5px;border-radius:5px;}
+	.bbs-write-tbl td .write-textarea{height:80px;}
+	.bbs-write-tbl td .write-sub-txt, .bbs-write-tbl td .write-sub-txt2{display:block; margin-left:0; margin-top:5px; text-align:right; font-size:12px; }
+
+	/* 게시판 :: 쓰기, 문의폼 :: 기타 */
+	.bbs-write-tbl .input-check{padding:5px 0;}
+	.bbs-write-tbl .input-check span{margin-right:15px;}
+	.phone-fieldset .write-input,
+	.phone-fieldset .write-select{width:calc(33.33% - 18px) !important;}
+	.bbs-write-tbl .email-fieldset .write-input{width:calc(50% - 18px) !important;}
+	.bbs-write-tbl .email-fieldset .write-select{max-width:100% !important; margin-top:5px; margin-left: 0;}
+	.bbs-write-tbl .address-btn{min-width:auto; font-size:12px; margin-left:5px; -webkit-border-radius:5px;-moz-border-radius:5px;-o-border-radius:5px;border-radius:5px;}
+
+	.inquiry-popup .bbs-write-tbl td, 
+	.inquiry-popup .bbs-write-tbl td.size-full,
+	.bbs-write-tbl td,
+	.bbs-write-tbl td.size-full{
+		padding-right: 0;
+	}
 }
 
 @media all and ( max-width: 800px ){
@@ -659,6 +680,9 @@ fieldset em{margin-left: 5.5px; margin-right: 2.5px; font-weight: 600; letter-sp
 
 	.button{min-height: 32px; font-size: 13px; padding: 3px 11px;}
 	.button.size-xl{min-height: 48px; font-size: 16px;}
+
+	.button-layout.bottom-buttons{gap: 4px;}
+	.button-layout.bottom-buttons .button{width: 80px;}
 
 	.result-count{font-size: 13px; line-height: 1.5;}
 	.total-results-wrap .result-count{font-size: 13px;}

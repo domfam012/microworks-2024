@@ -302,10 +302,11 @@ section.full-height{height: 100dvh;}
 .autoplay-slider .slick-arrow{flex-shrink: 0; width: 40px; height: 40px;}
 .autoplay-slider .material-icons{font-size: 40px; color: var(--arrow-disabled);}
 .autoplay-slider .material-icons:hover{color: var(--primary-color);}
-.autoplay-slider .controller{display: flex; justify-content: center; align-items: center; gap: 10px; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%;}
-.autoplay-slider .progress-wrapper{display: flex; align-items: center; justify-content: center; gap: 10px;}
-.autoplay-slider .progress-bar{width: 70px; height: 5px; background-color: #ddd;}
-.autoplay-slider .bar{display: block; width: 0%; height: 100%; background-color: var(--primary-color);}
+.autoplay-slider .controller{display: flex; justify-content: center; align-items: center; gap: 10px; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; height: 20px;}
+.autoplay-slider .progress{display: flex; align-items: center; justify-content: center; gap: 10px; height: 100%; margin-top: -2px;}
+.autoplay-slider .progress li{width: 70px; height: 5px; line-height: 0;}
+.autoplay-slider .progress li button{position: relative; width: 100%; height: 100%; background-color: #ddd;}
+.autoplay-slider .progress li button .bar{position: absolute; top: 0; left: 0; width: 0%; height: 100%; background-color: var(--primary-color);}
 .autoplay-slider .player{width: 20px; height: 20px;}
 .autoplay-slider .player:hover .material-icons{color: var(--primary-color);}
 .autoplay-slider .player .material-icons{display: none; color: #989898; font-size: 20px;}
@@ -672,7 +673,7 @@ fieldset em{margin-left: 5.5px; margin-right: 2.5px; font-weight: 600; letter-sp
 	.autoplay-slider .slider{gap: 4px; max-width: 100%;}
 	.autoplay-slider .item{ max-width: 100%; max-height: 300px;}
 	.autoplay-slider .material-icons{font-size: 24px;}
-	.autoplay-slider .progress-bar{width: 42px; height: 4px;}
+	.autoplay-slider .progress li{width: 42px; height: 4px;}
 	.autoplay-slider .slick-arrow{width: 24px; height: 24px;}
 
 	#mainQuickMenu .quick-menu-con dl{display: flex; align-items: center;}

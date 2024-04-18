@@ -325,17 +325,100 @@ jQuery(function($){
 		});
 	});
 
+	// const mainAutoPlaySlider = function(){
+	// 	$(".autoplay-slider").each(function(idx, el) {
+	// 		let slider = $(el).find(".slider");
+	// 		let autoSpeed = 3000;
+	// 		let currentIdx = 0;
+	// 		let controller = $(el).find(".controller");
+	// 		let dotsLength = 0;
+
+
+	// 		const fillStart = function(idx){
+	// 			console.log("idx", idx);
+	// 			controller.find(".progress > li").eq(idx).find(".bar").animate({"width": `100%`}, autoSpeed);
+	// 		}
+
+	// 		slider.on("init", function(){
+	// 			dotsLength = controller.find(".progress > li").length;
+
+	// 			for(var i = 0; i < dotsLength; i++){
+	// 				controller.find(".progress > li").eq(i).find("button").append(`<span class="bar" style="animation-duration: ${autoSpeed / 1000}s;"></span>`);
+	// 			}
+
+	// 			fillStart(currentIdx);
+	// 		});
+
+	// 		slider.slick({
+	// 			fade: true,
+	// 			arrows: true,
+	// 			infinite: true,
+	// 			autoplay: true,
+	// 			autoplaySpeed: autoSpeed,
+	// 			pauseOnHover: false,
+	// 			prevArrow: '<button type="button" data-role="none" class="slick-prev" aria-label="Prev" tabindex="0" role="button"><i class="material-icons">&#xE314;</i></button>',
+	// 			nextArrow: '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button"><i class="material-icons">&#xE315;</i></button>',
+	// 			dots: true,
+	// 			appendDots: $(el).find(".controller .progress-wrapper"),
+	// 			dotsClass: "progress",
+	// 		});
+
+			
+	// 		slider.on("beforeChange", function(){
+	// 			currentIdx = $(this).slick("slickCurrentSlide") + 1;
+	// 			fillStart(currentIdx);
+	// 		});
+
+			
+
+	// 		$(el).find(".player").on("click", function(){
+	// 			if($(this).hasClass("play")){
+	// 				$(this).removeClass("play").addClass("pause");
+	// 				slider.slick("slickPause");
+	// 			} else if($(this).hasClass("pause")){
+	// 				$(this).removeClass("pause").addClass("play");
+	// 				slider.slick("slickPlay");
+	// 			}
+	// 		});
+	// 	});
+	// }
 	const mainAutoPlaySlider = function(){
 		$(".autoplay-slider").each(function(idx, el) {
+			let slider = $(el).find(".slider");
 			let autoSpeed = 3000;
-			let itemLength = $(el).find(".item").length;
-			let str = "";
-			for(var i = 0; i < itemLength; i++){
-				str += `<a href="javascript:void(0);" class="progress-bar"><span class="bar"></span></a>`;
-			}
-			$(el).find(".controller .progress-wrapper").html(str);
+			let currentIdx = 0;
+			let controller = $(el).find(".controller");
+			let dotsLength = 0;
 
-			$(el).find(".slider").slick({
+			const fillStart = function(idx){
+				controller.find(".progress > li").eq(idx).find(".bar").stop().animate({"width": `100%`}, autoSpeed);
+			}
+			const fillRestart = function(idx){
+				controller.find(".progress > li").eq(idx).find(".bar").stop().animate({"width": `0%`}, 0);
+				controller.find(".progress > li").eq(idx).find(".bar").stop().animate({"width": `100%`}, autoSpeed);
+			}
+			const fillStop = function(idx){
+				controller.find(".progress > li").eq(idx).find(".bar").stop();
+			}
+
+			const fillCheck = function(idx){
+				for(var i = 0; i < idx; i++){
+					controller.find(".progress > li").eq(i).find(".bar").stop().animate({"width": `100%`}, 0);
+				}
+				for(var i = idx; i < dotsLength; i++){
+					controller.find(".progress > li").eq(i).find(".bar").stop().animate({"width": `0%`}, 0);
+				}
+			}
+
+			slider.on("init", function(){
+				dotsLength = controller.find(".progress > li").length;
+				for(var i = 0; i < dotsLength; i++){
+					controller.find(".progress > li").eq(i).find("button").html(`<span class="bar"></span>`);
+				}
+				fillStart(currentIdx);
+			});
+
+			slider.slick({
 				fade: true,
 				arrows: true,
 				infinite: true,
@@ -344,34 +427,41 @@ jQuery(function($){
 				pauseOnHover: false,
 				prevArrow: '<button type="button" data-role="none" class="slick-prev" aria-label="Prev" tabindex="0" role="button"><i class="material-icons">&#xE314;</i></button>',
 				nextArrow: '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button"><i class="material-icons">&#xE315;</i></button>',
+				dots: true,
+				appendDots: $(el).find(".controller .progress-wrapper"),
+				dotsClass: "progress",
 			});
 
-			// $(el).find(".slider").on("beforeChange", changeBefore = function(){
-			// 	let targetIdx = $(this).find(".item.slick-active").attr("data-slick-index");
-			// 	let $target = $(el).find(".progress-bar").eq(targetIdx).find(".bar");
-			// 	if(Number($(this).find(".item.slick-active").attr("data-slick-index")) + 1 >= itemLength){
-			// 		console.log("!!!");
-			// 		$(el).find(".progress-bar").find(".bar").css({width: "0%"});
-			// 	}
-			// 	$target.animate({width: "100%"}, autoSpeed, "linear");
+			slider.on("beforeChange", function(e, slick, currentSlide, nextSlide){
+				currentIdx = nextSlide;
+				fillCheck(currentIdx);
+				fillStart(currentIdx);
+			});
+			// slider.on("afterChange", function(e, slick, currentSlide){
+			// 	currentIdx = currentSlide;
+			// 	console.log("After - currentIdx", currentIdx);
+			// });
 
-			// 	return targetIdx;
+			// slider.on("mouseenter", function(){
+			// 	$(this).slick("slickPause");
+			// 	fillStop(currentIdx);
+			// });
+			// slider.on("mouseleave", function(){
+			// 	$(this).slick("slickPlay");
+			// 	fillRestart(currentIdx);
 			// });
 
 			$(el).find(".player").on("click", function(){
 				if($(this).hasClass("play")){
 					$(this).removeClass("play").addClass("pause");
-					$(el).find(".slider").slick("slickPause");
+					slider.slick("slickPlay");
+					fillRestart(currentIdx);
 				} else if($(this).hasClass("pause")){
 					$(this).removeClass("pause").addClass("play");
-					$(el).find(".slider").slick("slickPlay");
+					slider.slick("slickPause");
+					fillStop(currentIdx);
 				}
-			})
+			});
 		});
-	
-
-		
-
-		
 	}
 });

@@ -56,6 +56,7 @@ h6{font-size: 30px; font-weight: 600;}
 
 strong,
 .strong{font-weight: 600;}
+.text-normal{font-weight: 400;}
 
 .text-center{text-align: center !important;}
 .text-right{text-align: right !important;}
@@ -153,7 +154,6 @@ table .ox{height: 38px; display: inline-flex; align-items: center;}
 
 /* result-count */
 .result-count{font-size: 14px; color: var(--text-color-darken);}
-.result-count span{color: var(--primary-color);}
 
 /* helper */
 .extra{flex-shrink: 0; margin-left: auto;}
@@ -230,7 +230,7 @@ section.full-height{height: 100dvh;}
 .visual-item .deco-icon{display: inline-block; margin-bottom: 30px;}
 .visual-item .sub-title{font-size: 24px; margin-bottom: 14px;}
 .visual-item h3{margin-bottom: 24px;}
-.visual-item .desc{font-size: 18px; margin-bottom: 34px; color: rgba(255, 255, 255, 0.7); font-weight: 300; line-height: 1.5; -webkit-transition-delay:0.3s;-moz-transition-delay:0.3s;-o-transition-delay:0.3s;-ms-transition-delay:0.3s;transition-delay:0.3s;}
+.visual-item .desc{font-size: 18px; margin-bottom: 34px; color: rgba(255, 255, 255, 0.7); font-weight: 300; line-height: 1.5; letter-spacing: -.5px; -webkit-transition-delay:0.3s;-moz-transition-delay:0.3s;-o-transition-delay:0.3s;-ms-transition-delay:0.3s;transition-delay:0.3s;}
 .visual-item .line{display: inline-block; width: 3px; height: 35px; background-color: #fff; -webkit-transition-delay:0.5s;-moz-transition-delay:0.5s;-o-transition-delay:0.5s;-ms-transition-delay:0.5s;transition-delay:0.7s;}
 
 .visual-item.active{opacity:1;filter:Alpha(opacity=100); visibility:visible;}
@@ -289,15 +289,15 @@ section.full-height{height: 100dvh;}
 
 .main-search-box input{color: var(--text-color);}
 
-#mainAbout .about-con .tit-txt{font-weight: 600; color: inherit; line-height: 1.25;}
+#mainAbout .about-con .tit-txt{color: inherit; line-height: 1.25;}
 #mainAbout .notice-con .notice-item{padding: 30px 36px 30px 20px;}
-#mainAbout .notice-con .notice-item .notice-subject{color: var(--text-color-darken); font-weight: 600;}
-#mainAbout .notice-con .notice-item .notice-date{color: inherit; font-weight: 600;}
+#mainAbout .notice-con .notice-item .notice-subject{color: var(--text-color-darken);}
+#mainAbout .notice-con .notice-item .notice-date{color: var(--text-color);}
 
 .about-slides{display: flex; justify-content: center; margin-top: 134px;}
 .autoplay-slider{flex: 1 1 50%; position: relative; padding-bottom: 30px; max-width: 50%;}
 .autoplay-slider .slider{display: flex; align-items: center; gap: 10px;}
-.autoplay-slider .item{flex-grow: 0; display: flex; justify-content: center; align-items: center; max-height: 300px; overflow: hidden; background: url() center/cover no-repeat;}
+.autoplay-slider .item{flex-grow: 0; display: flex; justify-content: center; align-items: center; max-height: 300px; overflow: hidden;}
 .autoplay-slider .item img{width: 100%; height: 100%;}
 .autoplay-slider .slick-arrow{flex-shrink: 0; width: 40px; height: 40px;}
 .autoplay-slider .material-icons{font-size: 40px; color: var(--arrow-disabled);}
@@ -316,7 +316,7 @@ section.full-height{height: 100dvh;}
 .total-results-wrap .result-count{font-size: 16px;}
 .total-results{margin-bottom: 20px; padding: 16px 0; border-bottom: 1px solid var(--line-color); font-weight: 600;}
 
-#mainGlobalCon .global-con .global-tit span{font-weight: 600; color: var(--text-color);}
+#mainGlobalCon .global-con .global-tit span{color: var(--text-color);}
 
 /* 메인 문의하기 */
 .main-inquiry{display: flex; gap: 70px; margin-top: 32px;}
@@ -360,8 +360,6 @@ section.full-height{height: 100dvh;}
 .main-inquiry .text-area {margin-top:20px; position:relative; background-color: rgba(255,255,255,0.33);  border:1px solid rgba(255,255,255,0.4); -webkit-border-radius:;-moz-border-radius:;-o-border-radius:;border-radius:10px; width:100%; height:278px; padding: 24px; -webkit-box-sizing: border-box;
 -moz-box-sizing: border-box;
 box-sizing: border-box; }
-
-.main-inquiry .agreement-wrapper .split-container .button{min-height: 32px;}
 
 .main-inquiry .text-area .main-textarea-txt {position:absolute; top:24px; left:24px; color:#fff; font-size:16px; letter-spacing:-0.75px; z-index:0;}
 .main-inquiry .text-area .main-textarea-txt i {color: rgba(255,255,255,0.8); margin-right:6px; }
@@ -604,6 +602,7 @@ fieldset em{margin-left: 5.5px; margin-right: 2.5px; font-weight: 600; letter-sp
 	.main-inquiry .inquiry-wrapper .extra-info{margin-top: 0;}
 	.main-inquiry .form-group{display: block;}
 	.main-inquiry .form-group .forms{margin-top: 12px;}
+	.main-inquiry .agreement-wrapper .split-container .button{padding: 8px;}
 
 	.inquiry-popup{padding: 15px; box-sizing: border-box;}
 	.inquiry-popup .modal-fixed-pop-inner{width: calc(100% - 30px);}
@@ -628,7 +627,7 @@ fieldset em{margin-left: 5.5px; margin-right: 2.5px; font-weight: 600; letter-sp
 	.result-count{font-size: 13px; line-height: 1.5;}
 	.total-results-wrap .result-count{font-size: 13px;}
 
-	.table-wrapper + .table-wrapper{margin-top: 28px;}
+	.table-wrapper{margin-top: 28px;}
 	.table-wrapper:last-child{margin-bottom: 0;}
 
 	.table-wrapper .bbs-list-row{width: 100%; padding: 8px 0;}
@@ -644,11 +643,11 @@ fieldset em{margin-left: 5.5px; margin-right: 2.5px; font-weight: 600; letter-sp
 
 	.margin-top-xxl{margin-top: 32px !important;}
 
-	.visual-item .text-wrap{top: 94px; left: 0; transform: none; width: 100%; padding: 0 15px; text-align: center; box-sizing: border-box;}
+	.visual-item .text-wrap{top: 12%; left: 0; transform: none; width: 100%; padding: 0 15px; text-align: center; box-sizing: border-box;}
 	.visual-item .deco-icon{width: 42px; height: 42px; margin-bottom: 25px;}
 	.visual-item .sub-title{font-size: 15px; margin-bottom: 10px;}
 	.visual-item h3{margin-bottom: 24px;}
-	.visual-item .desc{font-size: 14px; margin-bottom: 12px;}
+	.visual-item .desc{font-size: 14px; margin-bottom: 12px; letter-spacing: -1px;}
 	.visual-item .line{height: 18px;}
 
 	.side-menu{bottom: 10%; left: 0; transform: none; flex-wrap: wrap; gap: 15px; justify-content: center;}
@@ -664,17 +663,21 @@ fieldset em{margin-left: 5.5px; margin-right: 2.5px; font-weight: 600; letter-sp
 	.no-result-box p{font-size: 13px; line-height: 1.5;}
 	.no-result-box .button{width: 80px; margin-top: 20px;}
 
-	.total-results{margin-bottom: 28px; padding: 8px 0; font-weight: 400;}
+	.total-results{margin-bottom: 0; padding: 8px 0; font-weight: 400;}
 	.table-title{padding: 0;}
 	.table-title .title{font-size: 16px; line-height: 1.5;}
 
-	.about-slides{flex-direction: column; gap: 30px; margin-top: 50px;}
+	#mainAbout .notice-con .notice-item{padding: 8px 15px;}
+
+	.about-slides{flex-direction: column; gap: 30px; margin-top: 50px; padding: 0 2px;}
 	.autoplay-slider{flex: 1 1; max-width: 100%;}
 	.autoplay-slider .slider{gap: 4px; max-width: 100%;}
-	.autoplay-slider .item{ max-width: 100%; max-height: 300px;}
+	.autoplay-slider .item{max-width: 100%; max-height: 34.66vw;}
 	.autoplay-slider .material-icons{font-size: 24px;}
 	.autoplay-slider .progress li{width: 42px; height: 4px;}
 	.autoplay-slider .slick-arrow{width: 24px; height: 24px;}
+
+	#mainGlobalCon{background-color: white;}
 
 	#mainQuickMenu .quick-menu-con dl{display: flex; align-items: center;}
 	#mainQuickMenu .quick-menu-con dl dd{display: block;}
@@ -683,6 +686,7 @@ fieldset em{margin-left: 5.5px; margin-right: 2.5px; font-weight: 600; letter-sp
 	.contact dt{margin-bottom: 4px;}
 	.contact dd{display: inline-block;}
 
+	#mainInquiryCon{background-position-x: 25%;}
 	.main-inquiry{display: block; margin-top: 0;}
 	.main-inquiry .inquiry-wrapper,
 	.main-inquiry .agreement-wrapper{max-width: none;}
@@ -697,8 +701,9 @@ fieldset em{margin-left: 5.5px; margin-right: 2.5px; font-weight: 600; letter-sp
 	.main-inquiry .forms > input{height: 30px;}
 	.main-inquiry .forms input::placeholder{font-size: 13px;}
 
-	.main-inquiry .ox label{font-size: 13px;}
+	.main-inquiry .ox label{font-size: 13px; gap: 2px;}
 	.main-inquiry .text-area{height: 150px; margin-top: 10px; padding: 16px;}
+	.main-inquiry .text-area .main-textarea-txt{top: 19px; left: 16px;}
 	.main-inquiry .text-area .main-textarea-txt,
 	.main-inquiry .text-area .main-textarea-txt span{font-size: 13px;}
 	.main-inquiry .text-area .main-textarea-txt i{font-size: 20px;}

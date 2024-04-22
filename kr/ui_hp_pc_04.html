@@ -422,12 +422,12 @@
 			<article id="totalSearchResults" class="total-results-wrap">
 				<div class="area">
 					<div class="total-results">
-						<p class="result-count">총 <span>00</span>건</p>
+						<p class="result-count">총 <strong class="text-primary">00</strong>건</p>
 					</div>
 					<div class="table-wrapper">
 						<div class="table-title">
 							<p class="title">Memory Trend</p>
-							<strong class="result-count">총 <span>00</span>건</strong>
+							<strong class="result-count">총 <span class="text-primary">00</span>건</strong>
 							<div class="extra">
 								<a href="#" class="button type-round more-view"></a>
 							</div>
@@ -516,7 +516,7 @@
 					<div class="table-wrapper">
 						<div class="table-title">
 							<p class="title">Stock List</p>
-							<strong class="result-count">총 <span>00</span>건</strong>
+							<strong class="result-count">총 <span class="text-primary">00</span>건</strong>
 							<div class="extra">
 								<a href="#" class="button type-round more-view"></a>
 							</div>
@@ -611,7 +611,7 @@
 					<div class="table-wrapper">
 						<div class="table-title">
 							<p class="title">OEM Excess</p>
-							<strong class="result-count">총 <span>00</span>건</strong>
+							<strong class="result-count">총 <span class="text-primary">00</span>건</strong>
 							<div class="extra">
 								<a href="#" class="button type-round more-view"></a>
 							</div>
@@ -964,11 +964,6 @@
 										<label for="user-name">이름</label>
 										<input type="text" id="user-name" placeholder="이름을 입력해주세요." name="user-name" required="required">
 									</div>
-									<div class="forms">
-										<i class="material-icons">&#xe8f8;</i>
-										<label for="user-company">회사명</label>
-										<input type="text" id="user-company" placeholder="회사명을 입력해주세요." name="user-company">
-									</div>
 									<div class="forms required">
 										<i class="material-icons">&#xe0e1;</i>
 										<label for="user-email">이메일</label>
@@ -1000,6 +995,11 @@
 										<input type="text" id="user-contact" placeholder="ex)010-1234-5678" name="user-contact"
 											required="required">
 									</div>
+									<div class="forms">
+										<i class="material-icons">&#xe8f8;</i>
+										<label for="user-company">회사명</label>
+										<input type="text" id="user-company" placeholder="회사명을 입력해주세요." name="user-company">
+									</div>
 									<div class="extra-info">
 										<div class="form-group">
 											<div class="forms">
@@ -1030,11 +1030,11 @@
 											<label for="agree1"><i class="material-icons">&#xe876;</i>개인정보처리방침에 동의합니다.</label>
 										</span>
 										<a href="javascript:;" onclick="javascript:layerLoad('/service/privacy.php'); return false;"
-											class="button type-line"><span>개인정보처리방침 보기</span></a>
+										class="button type-line size-sm"><strong>개인정보처리방침 보기</strong></a>
 									</div>
 									<div class="text-area">
 										<textarea name="content" class="main-textarea"></textarea>
-										<p class="main-textarea-txt"><i class="material-icons">&#xe0b7</i>문의내용 <span>(500자 이내로
+										<p class="main-textarea-txt"><i class="material-icons">&#xe0b7</i><strong>문의내용</strong> <span>(500자 이내로
 												입력해주세요.)</span></p>
 									</div>
 									<dl class="contact">

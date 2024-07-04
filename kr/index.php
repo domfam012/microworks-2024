@@ -59,6 +59,7 @@ $bannermain_r_rs = $db->select("cs_banner_main","where direction='R' and CURDATE
 							<h3>SEMICONDUCTOR TOTAL SOLUTION PROVIDER</h3>
 							<p class="desc">마이크로웍스 코리아(주)는 2007년 설립한,<br class="mo-only" /> 반도체 개발,제조,유통의 종합적인 솔루션을 제공하는 기업입니다.</p>
 							<span class="line"></span>
+							<div class="video-btn"><a href="javascript:;" onclick="javascript:layerLoad('<?=$site_url?>/index_video_popup.php'); return false;" class=""><i class="material-icons">&#xe62e</i>Microworks Media</a></div>
 						</div>
 					</div>
 					<div class="visual-item">
@@ -69,6 +70,7 @@ $bannermain_r_rs = $db->select("cs_banner_main","where direction='R' and CURDATE
 							<h3>SEMICONDUCTOR TOTAL SOLUTION PROVIDER</h3>
 							<p class="desc">메모리 가격 동향, 제품 검색, 재고문의를 <br class="mo-only" />한 번에 확인하실 수 있습니다.</p>
 							<span class="line"></span>
+							<div class="video-btn"><a href="javascript:;" onclick="javascript:layerLoad('<?=$site_url?>/index_video_popup.php'); return false;" class=""><i class="material-icons">&#xe62e</i>Microworks Media</a></div>
 						</div>
 					</div>
 					<div class="visual-item">
@@ -79,6 +81,7 @@ $bannermain_r_rs = $db->select("cs_banner_main","where direction='R' and CURDATE
 							<h3>SEMICONDUCTOR TOTAL SOLUTION PROVIDER</h3>
 							<p class="desc">간편하게 필요하신 제품의 사양으로 <br class="mo-only" />검색할 수 있습니다.</p>
 							<span class="line"></span>
+							<div class="video-btn"><a href="javascript:;" onclick="javascript:layerLoad('<?=$site_url?>/index_video_popup.php'); return false;" class=""><i class="material-icons">&#xe62e</i>Microworks Media</a></div>
 						</div>
 					</div>
 					<div class="visual-item">
@@ -89,6 +92,7 @@ $bannermain_r_rs = $db->select("cs_banner_main","where direction='R' and CURDATE
 							<h3>SEMICONDUCTOR TOTAL SOLUTION PROVIDER</h3>
 							<p class="desc">필요한 전자부품 재고를 문의하실 수 있습니다.</p>
 							<span class="line"></span>
+							<div class="video-btn"><a href="javascript:;" onclick="javascript:layerLoad('<?=$site_url?>/index_video_popup.php'); return false;" class=""><i class="material-icons">&#xe62e</i>Microworks Media</a></div>
 						</div>
 					</div>
 					<div class="visual-item">
@@ -99,6 +103,7 @@ $bannermain_r_rs = $db->select("cs_banner_main","where direction='R' and CURDATE
 							<h3>SEMICONDUCTOR TOTAL SOLUTION PROVIDER</h3>
 							<p class="desc">반도체 불량분석, 위조품 판단, 분석리포트 발행</p>
 							<span class="line"></span>
+							<div class="video-btn"><a href="javascript:;" onclick="javascript:layerLoad('<?=$site_url?>/index_video_popup.php'); return false;" class=""><i class="material-icons">&#xe62e</i>Microworks Media</a></div>
 						</div>
 					</div>
 				</div>

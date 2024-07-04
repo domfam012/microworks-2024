@@ -60,6 +60,7 @@ $bannermain_r_rs = $db->select("cs_banner_main","where direction='R' and CURDATE
 							<h3>SEMICONDUCTOR TOTAL SOLUTION PROVIDER</h3>
 							<p class="desc">Microworks Korea Co., Ltd. is Professional global IC, Memory <br /> parts distributor which established in 2007.</p>
 							<span class="line"></span>
+							<div class="video-btn"><a href="javascript:;" onclick="javascript:layerLoad('<?=$site_url?>/index_video_popup.php'); return false;" class=""><i class="material-icons">&#xe62e</i>Microworks Media</a></div>
 						</div>
 					</div>
 					<div class="visual-item">
@@ -70,6 +71,7 @@ $bannermain_r_rs = $db->select("cs_banner_main","where direction='R' and CURDATE
 							<h3>SEMICONDUCTOR TOTAL SOLUTION PROVIDER</h3>
 							<p class="desc">Memory Price Trend, Product Search, Request for Quotation</p>
 							<span class="line"></span>
+							<div class="video-btn"><a href="javascript:;" onclick="javascript:layerLoad('<?=$site_url?>/index_video_popup.php'); return false;" class=""><i class="material-icons">&#xe62e</i>Microworks Media</a></div>
 						</div>
 					</div>
 					<div class="visual-item">
@@ -80,6 +82,7 @@ $bannermain_r_rs = $db->select("cs_banner_main","where direction='R' and CURDATE
 							<h3>SEMICONDUCTOR TOTAL SOLUTION PROVIDER</h3>
 							<p class="desc">Quick and easy search by specification</p>
 							<span class="line"></span>
+							<div class="video-btn"><a href="javascript:;" onclick="javascript:layerLoad('<?=$site_url?>/index_video_popup.php'); return false;" class=""><i class="material-icons">&#xe62e</i>Microworks Media</a></div>
 						</div>
 					</div>
 					<div class="visual-item">
@@ -90,6 +93,7 @@ $bannermain_r_rs = $db->select("cs_banner_main","where direction='R' and CURDATE
 							<h3>SEMICONDUCTOR TOTAL SOLUTION PROVIDER</h3>
 							<p class="desc">One stop RFQ</p>
 							<span class="line"></span>
+							<div class="video-btn"><a href="javascript:;" onclick="javascript:layerLoad('<?=$site_url?>/index_video_popup.php'); return false;" class=""><i class="material-icons">&#xe62e</i>Microworks Media</a></div>
 						</div>
 					</div>
 					<div class="visual-item">
@@ -100,6 +104,7 @@ $bannermain_r_rs = $db->select("cs_banner_main","where direction='R' and CURDATE
 							<h3>SEMICONDUCTOR TOTAL SOLUTION PROVIDER</h3>
 							<p class="desc">Semiconductor Failure Analysis,<br class="mo-only" /> Counterfeit part distinction,<br class="mo-only" /> Issuing the Analysis Report</p>
 							<span class="line"></span>
+							<div class="video-btn"><a href="javascript:;" onclick="javascript:layerLoad('<?=$site_url?>/index_video_popup.php'); return false;" class=""><i class="material-icons">&#xe62e</i>Microworks Media</a></div>
 						</div>
 					</div>
 				</div>

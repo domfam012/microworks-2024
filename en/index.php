@@ -345,161 +345,99 @@ $bannermain_r_rs = $db->select("cs_banner_main","where direction='R' and CURDATE
 									</tr>
 								</thead>
 								<tbody>
-<?
+										<?
 
-function get($url){
+										function get($url){
 
-	$ch = curl_init($url);
-	curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-	$result = curl_exec($ch);
-	if(curl_errno($ch)){
-		throw new Exception(curl_error($ch));
-	}
+											$ch = curl_init($url);
+											curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+											$result = curl_exec($ch);
+											if(curl_errno($ch)){
+												throw new Exception(curl_error($ch));
+											}
 
-	curl_close($ch);
-	return $result;
+											curl_close($ch);
+											return $result;
 
-}
+										}
+										$today = date('Y-m-d', strtotime('0 day'));
+										$url = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$today.'/v1/currencies/usd.json';
+										$result = get($url);
+										$data = json_decode($result,true);
+										$yesterday = date('Y-m-d', strtotime('-1 day'));
+										$url = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$yesterday.'/v1/currencies/usd.json';
+										$result = get($url);
+										$data2 = json_decode($result,true);
 
-$url = 'https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRWUSD';
-$result = get($url);
-$data = json_decode($result,true);
-$data = $data[0];
+										$_usd = sprintf('%0.2f',$data['usd']['krw']); // 당일
+										$_openusd = sprintf('%0.2f',$data2['usd']['krw']); // 전일
+										$_scp = sprintf('%0.2f',$_usd - $_openusd); // 전일대비
+										$_openusd_op = sprintf('%0.2f',$_scp / $_usd * 100); // 등락률
+										?>
+										<tr>
+											<th><p><span class="plag-icon"><img src="<?=$site_host?>/images/main/main_exchange_usd_icon.jpg" alt=""></span>U.S.A (USD)</p></th>
+											<td><?=$_usd?></td>
+											<td><p class="net-change"><span class="<? if($_scp>0){ ?>up-icon<? } else if($_scp<0){ ?>down-icon<? } ?>"></span><?=$_scp?></p></td>
+											<td><p class="up-down"><span class="<? if($_scp>0){ ?>up-icon<? } else if($_scp<0){ ?>down-icon<? } ?>"></span> <?=sprintf('%0.2f',$_openusd_op)?>%</p></td>
+										</tr>
+										<?
+										$url = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$today.'/v1/currencies/jpy.json';
+										$result = get($url);
+										$data = json_decode($result,true);
+										$url = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$yesterday.'/v1/currencies/jpy.json';
+										$result = get($url);
+										$data2 = json_decode($result,true);
 
-$_provider = $data['provider'];
-$_buying = $data['cashBuyingPrice'];
-$_selling = $data['cashSellingPrice'];
-$_ttselling = $data['ttSellingPrice'];
-$_ttbuyling = $data['ttBuyingPrice'];
-$_usd = $data['basePrice'];
-$_openusd = $data['openingPrice'];
-$_chusd = $data['changePrice'];
-$_scp = $data['signedChangePrice'];
-$_scr = $data['signedChangeRate'];
-$_openusd_o = $_usd - $_openusd;
-$_openusd_op = ($_chusd/$_usd)*100;
-$_openusd = round($_openusd,2);
-
-$ud = sprintf('%0.2f',$_usd);
-$p1 = explode(".",$ud);
-$p2 = number_format($p1[0]);
-$op1 = $p2.".".$p1[1];
-
-?>
-
-								<tbody>
-									<tr>
-										<th><p><span class="plag-icon"><img src="<?=$site_host?>/images/main/main_exchange_usd_icon.jpg" alt=""></span>U.S.A (USD)</p></th>
-										<td><?=$op1?></td>
-										<td><p class="net-change"><span class="<? if($_scp>0){ ?>up-icon<? } else if($_scp<0){ ?>down-icon<? } ?>"></span><?=$_scp?></p></td>
-										<td><p class="up-down"><span class="<? if($_scp>0){ ?>up-icon<? } else if($_scp<0){ ?>down-icon<? } ?>"></span> <? if($_scp>0){ ?>+<? } else if($_scp<0){ ?>-<? } ?><?=sprintf('%0.2f',$_openusd_op)?>%</p></td>
-									</tr>
-
-<?
-
-$url = 'https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRWJPY';
-$result = get($url);
-$data = json_decode($result,true);
-$data = $data[0];
-
-$_provider = $data['provider'];
-$_buying = $data['cashBuyingPrice'];
-$_selling = $data['cashSellingPrice'];
-$_ttselling = $data['ttSellingPrice'];
-$_ttbuyling = $data['ttBuyingPrice'];
-$_usd = $data['basePrice'];
-$_openusd = $data['openingPrice'];
-$_chusd = $data['changePrice'];
-$_scp = $data['signedChangePrice'];
-$_scr = $data['signedChangeRate'];
-$_openusd_o = $_usd - $_openusd;
-$_openusd_op = ($_chusd/$_usd)*100;
-$_openusd = round($_openusd,2);
-
-$ud = sprintf('%0.2f',$_usd);
-$p1 = explode(".",$ud);
-$p2 = number_format($p1[0]);
-$op1 = $p2.".".$p1[1];
-
-?>
-
-									<tr class="blue-row">
+										$_usd = sprintf('%0.2f',$data['jpy']['krw']*100); // 당일
+										$_openusd = sprintf('%0.2f',$data2['jpy']['krw']*100); // 전일
+										$_scp = sprintf('%0.2f',$_usd - $_openusd); // 전일대비
+										$_openusd_op = sprintf('%0.2f',$_scp / $_usd * 100); // 등락률
+										?>
+										<tr>
 										<th><p><span class="plag-icon"><img src="<?=$site_host?>/images/main/main_exchange_jpy_icon.jpg" alt=""></span>Japan (JPY)</p></th>
-										<td><?=$op1?></td>
-										<td><p class="net-change"><span class="<? if($_scp>0){ ?>up-icon<? } else if($_scp<0){ ?>down-icon<? } ?>"></span><?=$_scp?></p></td>
-										<td><p class="up-down"><span class="<? if($_scp>0){ ?>up-icon<? } else if($_scp<0){ ?>down-icon<? } ?>"></span> <? if($_scp>0){ ?>+<? } else if($_scp<0){ ?>-<? } ?><?=sprintf('%0.2f',$_openusd_op)?>%</p></td>
-									</tr>
+											<td><?=$_usd?></td>
+											<td><p class="net-change"><span class="<? if($_scp>0){ ?>up-icon<? } else if($_scp<0){ ?>down-icon<? } ?>"></span><?=$_scp?></p></td>
+											<td><p class="up-down"><span class="<? if($_scp>0){ ?>up-icon<? } else if($_scp<0){ ?>down-icon<? } ?>"></span> <?=sprintf('%0.2f',$_openusd_op)?>%</p></td>
+										</tr>
+										<?
+										$url = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$today.'/v1/currencies/eur.json';
+										$result = get($url);
+										$data = json_decode($result,true);
+										$url = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$yesterday.'/v1/currencies/eur.json';
+										$result = get($url);
+										$data2 = json_decode($result,true);
 
-<?
-
-$url = 'https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRWEUR';
-$result = get($url);
-$data = json_decode($result,true);
-$data = $data[0];
-
-$_provider = $data['provider'];
-$_buying = $data['cashBuyingPrice'];
-$_selling = $data['cashSellingPrice'];
-$_ttselling = $data['ttSellingPrice'];
-$_ttbuyling = $data['ttBuyingPrice'];
-$_usd = $data['basePrice'];
-$_openusd = $data['openingPrice'];
-$_chusd = $data['changePrice'];
-$_scp = $data['signedChangePrice'];
-$_scr = $data['signedChangeRate'];
-$_openusd_o = $_usd - $_openusd;
-$_openusd_op = ($_chusd/$_usd)*100;
-$_openusd = round($_openusd,2);
-
-$ud = sprintf('%0.2f',$_usd);
-$p1 = explode(".",$ud);
-$p2 = number_format($p1[0]);
-$op1 = $p2.".".$p1[1];
-
-?>
-
-									<tr>
+										$_usd = sprintf('%0.2f',$data['eur']['krw']); // 당일
+										$_openusd = sprintf('%0.2f',$data2['eur']['krw']); // 전일
+										$_scp = sprintf('%0.2f',$_usd - $_openusd); // 전일대비
+										$_openusd_op = sprintf('%0.2f',$_scp / $_usd * 100); // 등락률
+										?>
+										<tr>
 										<th><p><span class="plag-icon"><img src="<?=$site_host?>/images/main/main_exchange_eur_icon.jpg" alt=""></span>EU (EUR)</p></th>
-										<td><?=$op1?></td>
-										<td><p class="net-change"><span class="<? if($_scp>0){ ?>up-icon<? } else if($_scp<0){ ?>down-icon<? } ?>"></span><?=$_scp?></p></td>
-										<td><p class="up-down"><span class="<? if($_scp>0){ ?>up-icon<? } else if($_scp<0){ ?>down-icon<? } ?>"></span> <? if($_scp>0){ ?>+<? } else if($_scp<0){ ?>-<? } ?><?=sprintf('%0.2f',$_openusd_op)?>%</p></td>
-									</tr>
+											<td><?=$_usd?></td>
+											<td><p class="net-change"><span class="<? if($_scp>0){ ?>up-icon<? } else if($_scp<0){ ?>down-icon<? } ?>"></span><?=$_scp?></p></td>
+											<td><p class="up-down"><span class="<? if($_scp>0){ ?>up-icon<? } else if($_scp<0){ ?>down-icon<? } ?>"></span> <?=sprintf('%0.2f',$_openusd_op)?>%</p></td>
+										</tr>
+										<?
+										$url = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$today.'/v1/currencies/cny.json';
+										$result = get($url);
+										$data = json_decode($result,true);
+										$url = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$yesterday.'/v1/currencies/cny.json';
+										$result = get($url);
+										$data2 = json_decode($result,true);
 
-<?
-
-$url = 'https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRWCNY';
-$result = get($url);
-$data = json_decode($result,true);
-$data = $data[0];
-
-$_provider = $data['provider'];
-$_buying = $data['cashBuyingPrice'];
-$_selling = $data['cashSellingPrice'];
-$_ttselling = $data['ttSellingPrice'];
-$_ttbuyling = $data['ttBuyingPrice'];
-$_usd = $data['basePrice'];
-$_openusd = $data['openingPrice'];
-$_chusd = $data['changePrice'];
-$_scp = $data['signedChangePrice'];
-$_scr = $data['signedChangeRate'];
-$_openusd_o = $_usd - $_openusd;
-$_openusd_op = ($_chusd/$_usd)*100;
-$_openusd = round($_openusd,2);
-
-$ud = sprintf('%0.2f',$_usd);
-$p1 = explode(".",$ud);
-$p2 = number_format($p1[0]);
-$op1 = $p2.".".$p1[1];
-
-?>
-
-									<tr class="blue-row">
+										$_usd = sprintf('%0.2f',$data['cny']['krw']); // 당일
+										$_openusd = sprintf('%0.2f',$data2['cny']['krw']); // 전일
+										$_scp = sprintf('%0.2f',$_usd - $_openusd); // 전일대비
+										$_openusd_op = sprintf('%0.2f',$_scp / $_usd * 100); // 등락률
+										?>
+										<tr>
 										<th><p><span class="plag-icon"><img src="<?=$site_host?>/images/main/main_exchange_cny_icon.jpg" alt=""></span>China (CNY)</p></th>
-										<td><?=$op1?></td>
-										<td><p class="net-change"><span class="<? if($_scp>0){ ?>up-icon<? } else if($_scp<0){ ?>down-icon<? } ?>"></span><?=$_scp?></p></td>
-										<td><p class="up-down"><span class="<? if($_scp>0){ ?>up-icon<? } else if($_scp<0){ ?>down-icon<? } ?>"></span> <? if($_scp>0){ ?>+<? } else if($_scp<0){ ?>-<? } ?><?=sprintf('%0.2f',$_openusd_op)?>%</p></td>
-									</tr>
-								</tbody>
+											<td><?=$_usd?></td>
+											<td><p class="net-change"><span class="<? if($_scp>0){ ?>up-icon<? } else if($_scp<0){ ?>down-icon<? } ?>"></span><?=$_scp?></p></td>
+											<td><p class="up-down"><span class="<? if($_scp>0){ ?>up-icon<? } else if($_scp<0){ ?>down-icon<? } ?>"></span> <?=sprintf('%0.2f',$_openusd_op)?>%</p></td>
+										</tr>
+                                    </tbody>
 							</table>
 						</div>
 					</div>

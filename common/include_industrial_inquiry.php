@@ -97,6 +97,8 @@
         $inquiry_txt_err_email_input = "이메일을 입력해 주세요.";
         $inquiry_txt_err_phone_input = "연락처를 입력해 주세요.";
     }
+
+    $productNumber = isset($_GET['productNumber']) ? $_GET['productNumber'] : '';
 ?>
 <div class="area">
     <article class="contact-form">
@@ -181,7 +183,7 @@
                         </tr>
                         <tr>
                             <th scope="row"><?=$inquiry_txt_partname?></th>
-                            <td><input type="text" class="write-input width-full" name="part_name" maxlength="200" id="part"></td>
+                            <td><input type="text" class="write-input width-full" name="part_name" maxlength="200" id="part" value="<?=$productNumber?>"></td>
                         </tr>
                         <tr>
                             <th scope="row"><?=$inquiry_txt_request_quantity?></th>

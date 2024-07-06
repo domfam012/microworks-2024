@@ -50,7 +50,7 @@ include $_SERVER["DOCUMENT_ROOT"].$site_directory."/include/dtd.php";
 	$pageScale	= 10;
 	if( !$startPage ) { $startPage = 0; }
 	$totalPage = floor($startPage / ($listScale * $pageScale));
-	$query		= "select * from $table where 1";
+	$query		= "select count(*) as total from $table";
 		if($search_order){
 			if($search_item){
 				$query.=" and $search_item like '%$search_order%'";
@@ -59,9 +59,10 @@ include $_SERVER["DOCUMENT_ROOT"].$site_directory."/include/dtd.php";
 			}
 		}
 	$rs				= mysql_query($query);
-	$totalList	= mysql_num_rows($rs);
+	$totalListRow	= mysql_fetch_assoc($rs);
+	$totalList	= $totalListRow['total'];
 
-	$query = "select * from $table where 1";
+	$query = "select * from $table";
 		if($search_order){
 			if($search_item){
 				$query.=" and $search_item like '%$search_order%'";

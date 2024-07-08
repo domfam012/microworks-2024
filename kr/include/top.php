@@ -116,10 +116,6 @@
 				<aside id="contentInfoCon" class="content-info-style01">
 					<h3 class="content-tit no-deco">상품 이름 넣어주세요</h3>
 				</aside>
-			<?} else if($productNumber){?>
-				<aside id="contentInfoCon" class="content-info-style01">
-					<h3 class="content-tit no-deco"><?=$productNumber?></h3>
-				</aside>
 			<?} else {?>
 				<aside id="contentInfoCon" class="content-info-style01">
 					<h3 class="content-tit"><?if($sub_info){?><?=$sub_info?><?}else{?><?=$page_info?><?}?></h3>

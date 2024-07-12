@@ -51,7 +51,7 @@ include $_SERVER["DOCUMENT_ROOT"].$site_directory."/include/dtd.php";
 				</article>
 				<article class="do-page sourcing-page area-box">
 					<div class="inner clearfix">
-						<div class="txt-con">
+						<div class="img-con">
 							<div class="inner">
 								<img src="<?=$site_host?>/images/content/sourcing_01.png" alt="">
 							</div>

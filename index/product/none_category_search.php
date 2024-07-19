@@ -123,9 +123,16 @@ if($lang==2){
                     if (data.ExactMatches) {
                         setExactMatched(data.ExactMatches);
                     }
+                    debugger
+                    var productsCount = data.ProductsCount;
                     // 상위카테고리
-                    if (data.FilterOptions.TopCategories) {
+                    if (productsCount > 0 && data.FilterOptions != null && data.FilterOptions.TopCategories) {
+                        $('#search-results').removeClass('hide');
+                        $('#search-results-none').addClass('hide');
                         setTopCategory(data.FilterOptions, 10, 1, sortby, orderby);
+                    } else {
+                        $('#search-results').addClass('hide');
+                        $('#search-results-none').removeClass('hide');
                     }
                 } else {
 
@@ -311,13 +318,13 @@ if($lang==2){
 
 <article class="sub-page product-page pc-only hide" id="noneCategorySearh2">
     <div class="area02">
-        <div class="search-results">
+        <div class="search-results" id="search-results">
             <div class="search-results-header type-category">
                 <p><?=$lang==2 ? "Top Category":($lang==3 ? "请输入搜索词":"상위 카테고리") ?></p>
             </div>
             <div class="search-results-body">
                 <div class="category-list" id="categoryList">
-                    <a href="#" class="item">
+                    <!-- <a href="#" class="item">
                         <img src="/data/goodsImages/goods1_001.png" alt="">
                         <div class="text-wrap">
                             <p class="tit">카테고리 명</p>
@@ -326,7 +333,19 @@ if($lang==2){
                                 <p>32,000 품목</p>
                             </div>
                         </div>
-                    </a>
+                    </a> -->
+                </div>
+            </div>
+        </div>
+        <div class="search-results hide" id="search-results-none">
+            <div class="search-results-header">
+                <p><?= $lang == 2 ? "Sorry." : ($lang == 3 ? "对不起。" : "죄송합니다.") ?> <strong class="text-primary" id="searchKeywordBottom"></strong><?= $lang == 2 ? "No search results found for" : ($lang == 3 ? "没有找到有关" : "에 대한 검색 결과가 없습니다.") ?> <strong class="text-primary" id="searchKeywordBottom"></strong></p>
+            </div>
+            <div class="search-results-body">
+                <div class="no-result-box">
+                    <img src="/images/icon/img-no-result.png" alt="검색 결과 없음 이미지">
+                    <p><?= $lang == 2 ? "Can't find the replacement product you're looking for?" : ($lang == 3 ? "找不到您要找的替代品吗？" : "찾으시는 대치품에 대한 검색결과가 없으신가요?") ?><br /><?= $lang == 2 ? "If you contact us, we will assist you promptly!" : ($lang == 3 ? "如果您联系我们，我们会迅速帮助您！" : "문의주시면 신속히 도와드리겠습니다!") ?></p>
+                    <a href="javascript:void(0);" onclick="contactUs()" class="button"><strong><?= $lang == 2 ? "Contact Us" : ($lang == 3 ? "联系我们" : "문의하기") ?></strong></a>
                 </div>
             </div>
         </div>

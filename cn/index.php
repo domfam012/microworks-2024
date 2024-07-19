@@ -361,16 +361,28 @@ $bannermain_r_rs = $db->select("cs_banner_main","where direction='R' and CURDATE
 
 										}
 										$today = date('Y-m-d', strtotime('0 day'));
-										$url = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$today.'/v1/currencies/usd.json';
-										$result = get($url);
-										$data = json_decode($result,true);
 										$yesterday = date('Y-m-d', strtotime('-1 day'));
-										$url = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$yesterday.'/v1/currencies/usd.json';
-										$result = get($url);
-										$data2 = json_decode($result,true);
+										$day_before_yesterday = date('Y-m-d', strtotime('-2 days'));
 
-										$_usd = sprintf('%0.2f',$data['usd']['krw']); // 당일
-										$_openusd = sprintf('%0.2f',$data2['usd']['krw']); // 전일
+										$url_today = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$today.'/v1/currencies/usd.json';
+										$url_yesterday = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$yesterday.'/v1/currencies/usd.json';
+										$url_day_before_yesterday = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$day_before_yesterday.'/v1/currencies/usd.json';
+
+										$result_today = get($url_today);
+										$result_yesterday = get($url_yesterday);
+										$result_day_before_yesterday = get($url_day_before_yesterday);
+										
+										$data_today = json_decode($result_today, true);
+										$data_yesterday = json_decode($result_yesterday, true);
+										$data_day_before_yesterday = json_decode($result_day_before_yesterday, true);
+		
+										if ($data_today['usd']['krw'] != 0) {
+											$_usd = sprintf('%0.2f', $data_today['usd']['krw']);// 당일
+											$_openusd = sprintf('%0.2f', $data_yesterday['usd']['krw']);// 전일
+										} else {
+											$_usd = sprintf('%0.2f', $data_yesterday['usd']['krw']);// 당일
+											$_openusd = sprintf('%0.2f', $data_day_before_yesterday['usd']['krw']);// 전일
+										}
 										$_scp = sprintf('%0.2f',$_usd - $_openusd); // 전일대비
 										$_openusd_op = sprintf('%0.2f',$_scp / $_usd * 100); // 등락률
 										?>
@@ -381,15 +393,25 @@ $bannermain_r_rs = $db->select("cs_banner_main","where direction='R' and CURDATE
 											<td><p class="up-down"><span class="<? if($_scp>0){ ?>up-icon<? } else if($_scp<0){ ?>down-icon<? } ?>"></span> <?=sprintf('%0.2f',$_openusd_op)?>%</p></td>
 										</tr>
 										<?
-										$url = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$today.'/v1/currencies/jpy.json';
-										$result = get($url);
-										$data = json_decode($result,true);
-										$url = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$yesterday.'/v1/currencies/jpy.json';
-										$result = get($url);
-										$data2 = json_decode($result,true);
+										$url_today = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$today.'/v1/currencies/jpy.json';
+										$url_yesterday = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$yesterday.'/v1/currencies/jpy.json';
+										$url_day_before_yesterday = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$day_before_yesterday.'/v1/currencies/jpy.json';
 
-										$_usd = sprintf('%0.2f',$data['jpy']['krw']*100); // 당일
-										$_openusd = sprintf('%0.2f',$data2['jpy']['krw']*100); // 전일
+										$result_today = get($url_today);
+										$result_yesterday = get($url_yesterday);
+										$result_day_before_yesterday = get($url_day_before_yesterday);
+										
+										$data_today = json_decode($result_today, true);
+										$data_yesterday = json_decode($result_yesterday, true);
+										$data_day_before_yesterday = json_decode($result_day_before_yesterday, true);
+
+										if ($data_today['jpy']['krw'] != 0) {
+											$_usd = sprintf('%0.2f', $data_today['jpy']['krw']*100);// 당일
+											$_openusd = sprintf('%0.2f', $data_yesterday['jpy']['krw']*100);// 전일
+										} else {
+											$_usd = sprintf('%0.2f', $data_yesterday['jpy']['krw']*100);// 당일
+											$_openusd = sprintf('%0.2f', $data_day_before_yesterday['jpy']['krw']*100);// 전일
+										}
 										$_scp = sprintf('%0.2f',$_usd - $_openusd); // 전일대비
 										$_openusd_op = sprintf('%0.2f',$_scp / $_usd * 100); // 등락률
 										?>
@@ -400,15 +422,25 @@ $bannermain_r_rs = $db->select("cs_banner_main","where direction='R' and CURDATE
 											<td><p class="up-down"><span class="<? if($_scp>0){ ?>up-icon<? } else if($_scp<0){ ?>down-icon<? } ?>"></span> <?=sprintf('%0.2f',$_openusd_op)?>%</p></td>
 										</tr>
 										<?
-										$url = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$today.'/v1/currencies/eur.json';
-										$result = get($url);
-										$data = json_decode($result,true);
-										$url = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$yesterday.'/v1/currencies/eur.json';
-										$result = get($url);
-										$data2 = json_decode($result,true);
+										$url_today = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$today.'/v1/currencies/eur.json';
+										$url_yesterday = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$yesterday.'/v1/currencies/eur.json';
+										$url_day_before_yesterday = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$day_before_yesterday.'/v1/currencies/eur.json';
 
-										$_usd = sprintf('%0.2f',$data['eur']['krw']); // 당일
-										$_openusd = sprintf('%0.2f',$data2['eur']['krw']); // 전일
+										$result_today = get($url_today);
+										$result_yesterday = get($url_yesterday);
+										$result_day_before_yesterday = get($url_day_before_yesterday);
+										
+										$data_today = json_decode($result_today, true);
+										$data_yesterday = json_decode($result_yesterday, true);
+										$data_day_before_yesterday = json_decode($result_day_before_yesterday, true);
+
+										if ($data_today['eur']['krw'] != 0) {
+											$_usd = sprintf('%0.2f', $data_today['eur']['krw']);// 당일
+											$_openusd = sprintf('%0.2f', $data_yesterday['eur']['krw']);// 전일
+										} else {
+											$_usd = sprintf('%0.2f', $data_yesterday['eur']['krw']);// 당일
+											$_openusd = sprintf('%0.2f', $data_day_before_yesterday['eur']['krw']);// 전일
+										}
 										$_scp = sprintf('%0.2f',$_usd - $_openusd); // 전일대비
 										$_openusd_op = sprintf('%0.2f',$_scp / $_usd * 100); // 등락률
 										?>
@@ -419,15 +451,25 @@ $bannermain_r_rs = $db->select("cs_banner_main","where direction='R' and CURDATE
 											<td><p class="up-down"><span class="<? if($_scp>0){ ?>up-icon<? } else if($_scp<0){ ?>down-icon<? } ?>"></span> <?=sprintf('%0.2f',$_openusd_op)?>%</p></td>
 										</tr>
 										<?
-										$url = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$today.'/v1/currencies/cny.json';
-										$result = get($url);
-										$data = json_decode($result,true);
-										$url = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$yesterday.'/v1/currencies/cny.json';
-										$result = get($url);
-										$data2 = json_decode($result,true);
+										$url_today = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$today.'/v1/currencies/cny.json';
+										$url_yesterday = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$yesterday.'/v1/currencies/cny.json';
+										$url_day_before_yesterday = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@'.$day_before_yesterday.'/v1/currencies/cny.json';
 
-										$_usd = sprintf('%0.2f',$data['cny']['krw']); // 당일
-										$_openusd = sprintf('%0.2f',$data2['cny']['krw']); // 전일
+										$result_today = get($url_today);
+										$result_yesterday = get($url_yesterday);
+										$result_day_before_yesterday = get($url_day_before_yesterday);
+										
+										$data_today = json_decode($result_today, true);
+										$data_yesterday = json_decode($result_yesterday, true);
+										$data_day_before_yesterday = json_decode($result_day_before_yesterday, true);
+
+										if ($data_today['cny']['krw'] != 0) {
+											$_usd = sprintf('%0.2f', $data_today['cny']['krw']);// 당일
+											$_openusd = sprintf('%0.2f', $data_yesterday['cny']['krw']);// 전일
+										} else {
+											$_usd = sprintf('%0.2f', $data_yesterday['cny']['krw']);// 당일
+											$_openusd = sprintf('%0.2f', $data_day_before_yesterday['cny']['krw']);// 전일
+										}
 										$_scp = sprintf('%0.2f',$_usd - $_openusd); // 전일대비
 										$_openusd_op = sprintf('%0.2f',$_scp / $_usd * 100); // 등락률
 										?>
